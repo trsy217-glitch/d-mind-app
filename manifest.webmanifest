@@ -1,7 +1,7 @@
 {
-  "name": "D_mind · 나의 디톡스 파트너",
+  "name": "D_mind · 나의 성장 파트너",
   "short_name": "D_mind",
-  "description": "물방울 또로와 함께하는 하루 디톡스 케어 — 미네랄 워터, 저혈당 식사, 몸 인식 운동, 수면 루틴.",
+  "description": "물방울 또로와 함께 매일을 성장으로 — 루틴·미네랄 워터·식사·운동·독서·기록까지 케어하는 일상 파트너.",
   "lang": "ko",
   "start_url": "./index.html",
   "scope": "./",

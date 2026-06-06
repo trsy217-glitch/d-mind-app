@@ -1,0 +1,15 @@
+# dependencies / build
+node_modules/
+.vercel/
+
+# secrets — NEVER commit your API key (use Vercel env vars instead)
+.env
+.env.local
+.env*.local
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/

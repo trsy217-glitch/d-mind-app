@@ -1,5 +1,5 @@
 // D_mind service worker — app-shell caching for offline use
-const CACHE = 'dmind-v1';
+const CACHE = 'dmind-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -26,6 +26,8 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
+  // Only handle same-origin requests; let cross-origin (TF.js, models, fonts) pass through.
+  if (new URL(req.url).origin !== self.location.origin) return;
   // network-first for navigations, cache-first for assets
   if (req.mode === 'navigate') {
     e.respondWith(
