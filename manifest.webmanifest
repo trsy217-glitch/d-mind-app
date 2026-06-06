@@ -1,0 +1,18 @@
+{
+  "name": "D_mind · 나의 디톡스 파트너",
+  "short_name": "D_mind",
+  "description": "물방울 또로와 함께하는 하루 디톡스 케어 — 미네랄 워터, 저혈당 식사, 몸 인식 운동, 수면 루틴.",
+  "lang": "ko",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EAFBF7",
+  "theme_color": "#15A99B",
+  "categories": ["health", "lifestyle", "fitness"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
