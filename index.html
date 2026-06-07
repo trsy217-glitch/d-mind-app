@@ -108,6 +108,7 @@ body{
 
 /* reading */
 .read-book{margin-top:12px;background:#F4FBF9;border:1.5px dashed #CFE9E3;border-radius:14px;padding:11px 13px;font-size:13px;font-weight:700;color:var(--aqua-deep);cursor:pointer}
+.read-quote{margin-top:11px;font-size:12px;font-weight:600;color:#6B5BFF;line-height:1.5;background:#F6F4FF;border-radius:12px;padding:10px 12px;border-left:3px solid #9D86FF}
 .read-bar{height:10px;border-radius:8px;background:#EFF6F4;overflow:hidden;margin-top:11px}
 .read-bar i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#9D86FF,#6B5BFF);transition:width .4s}
 .read-jbtn{width:100%;margin-top:11px;border:1.5px dashed #C9BEFF;background:#F6F4FF;color:#6B5BFF;font-weight:800;font-size:13px;padding:12px;border-radius:14px;cursor:pointer}
@@ -123,6 +124,22 @@ body{
 .rc-fields input:focus,.rc-fields textarea:focus{outline:none;border-color:#9D86FF}
 .rc-save{width:100%;margin-top:11px;border:none;border-radius:13px;padding:12px;font-family:'Jua';font-size:14px;color:#fff;background:linear-gradient(135deg,#9D86FF,#6B5BFF);cursor:pointer}
 .rc-save:active{transform:scale(.98)}
+.rc-mlabel{font-size:11px;font-weight:800;color:var(--ink-soft);margin:12px 0 7px}
+.rc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rc-chip{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:7px 11px;font-size:11.5px;font-weight:700;color:var(--ink-soft);cursor:pointer}
+.rc-chip.on{border-color:#9D86FF;background:#F2EEFF;color:#6B5BFF}
+.rc-stars{display:flex;gap:4px}
+.rc-star{font-size:24px;cursor:pointer;filter:grayscale(1);opacity:.4;transition:.15s}
+.rc-star.on{filter:none;opacity:1}
+.shelf-filter{display:flex;gap:6px;overflow-x:auto;padding:0 2px 10px}
+.shelf-filter::-webkit-scrollbar{height:0}
+.sf-chip{flex:0 0 auto;border:1.5px solid var(--line);background:#fff;border-radius:13px;padding:7px 12px;font-size:11.5px;font-weight:700;color:var(--ink-soft);cursor:pointer}
+.sf-chip.on{border-color:var(--aqua);background:var(--aqua-soft);color:var(--aqua-deep)}
+.book .meta{font-size:9.5px;font-weight:700;color:#8B7BD8;margin-top:3px}
+.book .stat{display:inline-block;font-size:9px;font-weight:800;padding:2px 6px;border-radius:7px;margin-top:4px}
+.book .stat.want{background:#FFEDE6;color:var(--coral-deep)}
+.book .stat.reading{background:#E7F4F1;color:var(--aqua-deep)}
+.book .stat.done{background:#EAF3E7;color:#3E9F5B}
 .shelf-wrap{margin-top:14px;display:none}
 .shelf-wrap.show{display:block}
 .shelf-head{font-family:'Jua';font-size:14px;padding-left:4px;margin-bottom:10px}
@@ -260,7 +277,27 @@ body{
 .subhead h2{font-family:'Jua';font-size:20px}
 
 /* exercise */
-.cam{margin-top:14px;border-radius:28px;height:330px;position:relative;overflow:hidden;background:linear-gradient(160deg,#1d4b49,#0f2e2c);box-shadow:var(--shadow)}
+.cam{margin-top:14px;border-radius:28px;height:min(58vh,460px);min-height:330px;position:relative;overflow:hidden;background:linear-gradient(160deg,#1d4b49,#0f2e2c);box-shadow:var(--shadow)}
+/* reference demo panel (top-right) */
+.refpanel{position:absolute;top:13px;right:13px;width:104px;z-index:6;background:rgba(255,255,255,.95);border-radius:14px;padding:8px;box-shadow:var(--shadow);text-align:center}
+.refpanel .rlabel{font-size:10px;font-weight:800;color:var(--aqua-deep);margin-bottom:5px}
+.refstage{width:88px;height:74px;margin:0 auto;background:linear-gradient(160deg,#EAFBF7,#D6F7F2);border-radius:10px;overflow:hidden;position:relative}
+.refstage svg{width:100%;height:100%}
+.reffig{transform-origin:center}
+.refvid{display:block;margin-top:6px;font-size:9.5px;font-weight:800;color:var(--ink-soft);text-decoration:none}
+.refvid:active{opacity:.6}
+/* reference figure animations */
+.reffig{transform-box:fill-box;transform-origin:center}
+.fig-part{transform-box:fill-box;transform-origin:center}
+@keyframes d-squat{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(15px) scaleY(.82)}}
+@keyframes d-stretch{0%{transform:translateX(-7px) rotate(-5deg)}50%{transform:translateX(7px) rotate(5deg)}100%{transform:translateX(-7px) rotate(-5deg)}}
+@keyframes d-plank{0%,100%{transform:translateY(0) rotate(78deg)}50%{transform:translateY(-4px) rotate(78deg)}}
+@keyframes d-breathe{0%,100%{transform:scale(.96)}50%{transform:scale(1.12)}}
+.demo-squat .reffig{animation:d-squat 2.2s ease-in-out infinite}
+.demo-stretch .reffig{animation:d-stretch 3s ease-in-out infinite}
+.demo-plank .reffig{animation:d-plank 2.6s ease-in-out infinite}
+.demo-breathe .reffig{animation:d-breathe 4.4s ease-in-out infinite}
+.demo-squat .ref-chest{animation:none}
 .cam video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1);opacity:.92}
 .cam .scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#3FE9D6,transparent);animation:scan 2.6s ease-in-out infinite;z-index:3}
 @keyframes scan{0%{top:8%}50%{top:90%}100%{top:8%}}
@@ -271,7 +308,7 @@ body{
 .bone{position:absolute;height:3px;background:rgba(63,233,214,.85);transform-origin:left center;border-radius:3px}
 .cam-badge{position:absolute;top:13px;left:13px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:800;padding:6px 11px;border-radius:12px;display:flex;gap:6px;align-items:center;border:1px solid rgba(255,255,255,.2);z-index:5}
 .rec{width:8px;height:8px;border-radius:50%;background:#FF5C5C;animation:tw 1.2s infinite}
-.accuracy{position:absolute;top:13px;right:13px;background:rgba(63,233,214,.92);color:#06302c;font-family:'Jua';font-size:14px;padding:7px 12px;border-radius:14px;z-index:5}
+.accuracy{position:absolute;top:48px;left:13px;background:rgba(63,233,214,.92);color:#06302c;font-family:'Jua';font-size:14px;padding:7px 12px;border-radius:14px;z-index:5}
 .cam-coach{position:absolute;left:13px;right:13px;bottom:13px;background:rgba(255,255,255,.96);border-radius:18px;padding:12px 14px;display:flex;gap:11px;align-items:center;box-shadow:var(--shadow);z-index:5}
 .cam-coach .txt{font-size:12.5px;font-weight:700;line-height:1.4}.cam-coach .txt b{color:var(--aqua-deep)}
 .repbox{display:flex;gap:10px;margin-top:14px}
@@ -279,6 +316,11 @@ body{
 .repbox .cell .n{font-family:'Jua';font-size:24px;color:var(--aqua-deep);line-height:1}.repbox .cell .n small{font-size:13px;color:var(--ink-soft)}
 .repbox .cell .k{font-size:11px;color:var(--ink-soft);font-weight:700;margin-top:5px}
 .wkbtns{display:flex;gap:10px;margin-top:14px}
+.pace-row{display:flex;align-items:center;gap:8px;margin-top:14px;background:#fff;border-radius:16px;padding:11px 13px;box-shadow:var(--shadow-soft)}
+.pace-lbl{font-size:12px;font-weight:800;color:var(--ink-soft);flex:1}
+.pace-btn{border:none;background:var(--aqua-soft);color:var(--aqua-deep);font-weight:800;font-size:12px;padding:8px 12px;border-radius:11px;cursor:pointer}
+.pace-btn:active{transform:scale(.95)}
+.pace-val{font-family:'Jua';font-size:14px;color:var(--ink);min-width:46px;text-align:center}
 .wkbtn{border:none;border-radius:16px;padding:15px;font-family:'Jua';font-size:15px;cursor:pointer;flex:1;transition:.15s}
 .wkbtn:active{transform:scale(.97)}
 .wkbtn.start{background:linear-gradient(135deg,#FF9C6F,#FF6B47);color:#fff;box-shadow:0 12px 22px -10px rgba(255,107,71,.8)}
@@ -376,6 +418,8 @@ body{
 .chatbar input:focus{outline:none;border-color:var(--aqua)}
 .chatbar button{flex:0 0 auto;width:46px;height:46px;border-radius:50%;border:none;background:linear-gradient(135deg,#37D6C6,#13A99B);color:#fff;font-size:20px;font-weight:800;cursor:pointer;box-shadow:0 8px 18px -8px rgba(19,169,155,.8)}
 .chatbar button:active{transform:scale(.94)}.chatbar button:disabled{opacity:.5}
+.chatbar #chatMic{background:#fff;color:var(--aqua-deep);font-size:18px;box-shadow:var(--shadow-soft)}
+.chatbar #chatMic.listening{background:linear-gradient(135deg,#FF9C6F,#FF6B47);color:#fff;animation:tw 1s infinite}
 
 /* profile */
 .prof-top{margin-top:14px;background:linear-gradient(155deg,#37D6C6,#15A99B);border-radius:28px;padding:22px;color:#fff;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
@@ -417,6 +461,7 @@ body{
 .modal .box h2{font-family:'Jua';font-size:24px;margin-top:10px;color:var(--honey-deep)}
 .modal .box p{font-size:13px;color:var(--ink-soft);margin-top:8px;font-weight:600;line-height:1.5}
 .modal .box button{margin-top:18px;border:none;border-radius:16px;padding:14px 30px;font-family:'Jua';font-size:15px;color:#fff;background:linear-gradient(135deg,#37D6C6,#13A99B);cursor:pointer}
+.modal .box .m-action{background:#FFEDE6;color:var(--coral-deep);margin-right:8px;padding:14px 20px}
 .install-banner{position:absolute;left:14px;right:14px;bottom:96px;background:var(--ink);color:#fff;border-radius:20px;padding:14px 16px;display:none;align-items:center;gap:12px;z-index:60;box-shadow:var(--shadow)}
 .install-banner.show{display:flex}
 .install-banner .it{flex:1;font-size:12px;font-weight:700;line-height:1.4}
@@ -477,7 +522,8 @@ body{
 
       <!-- reading tracker + journal -->
       <div class="card">
-        <div class="water-head"><h3>📖 오늘의 독서</h3><div class="cnt"><span id="readMin">0</span> / 15 분</div></div>
+        <div class="water-head"><h3>📖 오늘 15분 독서 습관</h3><div class="cnt"><span id="readMin">0</span> / 15 분</div></div>
+        <div class="read-quote" id="readQuote"></div>
         <div class="read-book" id="readBook">읽는 책을 정해볼까요? 탭해서 입력 ✎</div>
         <div class="read-bar"><i id="readBar" style="width:0%"></i></div>
         <div class="water-btns">
@@ -486,19 +532,26 @@ body{
         </div>
         <button class="read-jbtn" id="readJbtn">📔 오늘의 한 줄 기록 남기기</button>
         <div class="read-compose" id="readCompose">
-          <input type="file" accept="image/*" class="shot" id="coverShot">
+          <input type="file" accept="image/*" capture="environment" class="shot" id="coverShot">
           <div class="rc-row">
-            <div class="rc-cover" id="rcCover"><span>📷<br>표지</span></div>
+            <div class="rc-cover" id="rcCover"><span>📷<br>표지 찍기</span></div>
             <div class="rc-fields">
               <input id="rcBook" placeholder="책 제목">
-              <textarea id="rcNote" maxlength="120" placeholder="오늘 읽으며 마음에 남은 한 줄..."></textarea>
+              <textarea id="rcNote" maxlength="140" placeholder="오늘 마음에 남은 한 줄..."></textarea>
             </div>
           </div>
-          <button class="rc-save" id="rcSave">책장에 꽂기 📚</button>
+          <div class="rc-mlabel">장르</div>
+          <div class="rc-chips" id="rcGenre"></div>
+          <div class="rc-mlabel">상태</div>
+          <div class="rc-chips" id="rcStatus"></div>
+          <div class="rc-mlabel">별점</div>
+          <div class="rc-stars" id="rcStars"></div>
+          <button class="rc-save" id="rcSave">책장에 기록하기 📚</button>
         </div>
       </div>
       <div class="shelf-wrap" id="shelfWrap">
         <div class="shelf-head">📚 나의 책장 <span id="shelfCount"></span></div>
+        <div class="shelf-filter" id="shelfFilter"></div>
         <div class="shelf" id="shelf"></div>
       </div>
 
@@ -551,6 +604,11 @@ body{
         <div class="grid"></div><div class="scan"></div>
         <canvas class="posecanvas" id="poseCanvas"></canvas>
         <div class="skeleton" id="skel"></div>
+        <div class="refpanel" id="refPanel">
+          <div class="rlabel" id="refLabel">동작 가이드</div>
+          <div class="refstage" id="refStage"></div>
+          <a class="refvid" id="refVid" target="_blank" rel="noopener">▶ 자세 영상 보기</a>
+        </div>
         <div class="cam-badge"><span class="rec"></span> 실시간 인식 중</div>
         <div class="accuracy" id="accV">자세 92%</div>
         <div class="cam-coach">
@@ -564,9 +622,15 @@ body{
         </div>
       </div>
       <div class="repbox">
-        <div class="cell"><div class="n" id="repV">0<small>/12</small></div><div class="k" id="repK">스쿼트</div></div>
+        <div class="cell" id="repCell" style="cursor:pointer"><div class="n" id="repV">0<small>/12</small></div><div class="k" id="repK">스쿼트 (탭=수동 +1)</div></div>
         <div class="cell"><div class="n" id="timeV">00:00</div><div class="k">운동 시간</div></div>
         <div class="cell"><div class="n" id="kcalV">0<small>kcal</small></div><div class="k">소모</div></div>
+      </div>
+      <div class="pace-row">
+        <span class="pace-lbl">이 동작 길이</span>
+        <button class="pace-btn" id="paceMinus">− 짧게</button>
+        <span class="pace-val" id="paceVal">—</span>
+        <button class="pace-btn" id="pacePlus">길게 +</button>
       </div>
       <div class="wkbtns">
         <button class="wkbtn start" id="wkStart">운동 시작 ▶</button>
@@ -693,6 +757,7 @@ body{
         <button class="chip" data-q="물을 자꾸 까먹어. 습관 만드는 팁 줘">💧 물 챙기는 법</button>
       </div>
       <div class="chatbar">
+        <button id="chatMic" title="음성 입력">🎤</button>
         <input id="chatInput" placeholder="또로에게 물어보세요..." autocomplete="off">
         <button id="chatSend">↑</button>
       </div>
@@ -782,7 +847,7 @@ body{
 </div>
 
 <div class="toast" id="toast"></div>
-<div class="modal" id="modal"><div class="box"><div class="em" id="mEm">🎉</div><h2 id="mTitle"></h2><p id="mBody"></p><button id="mClose">좋아요!</button></div></div>
+<div class="modal" id="modal"><div class="box"><div class="em" id="mEm">🎉</div><h2 id="mTitle"></h2><p id="mBody"></p><button class="m-action" id="mAction" style="display:none"></button><button id="mClose">좋아요!</button></div></div>
 
 <script>
 /* ============ storage (works in-preview via memory fallback, persists on deploy) ============ */
@@ -811,6 +876,10 @@ let S=store.get('dmind',null)||defaultState();
 if(!S.diary)S.diary=[];if(S.totalReadMin===undefined)S.totalReadMin=0;if(S.book===undefined)S.book='';
 if(S.coachHist===undefined)S.coachHist=[];if(S.coachFreeUsed===undefined)S.coachFreeUsed=0;
 if(!S.readLog)S.readLog=[];if(!S.mealLog)S.mealLog=[];
+if(!S.books){S.books=[];/* migrate old flat readLog into grouped books */
+  (S.readLog||[]).slice().reverse().forEach(e=>{const t=(e.book||'제목 없음').trim();
+    let b=S.books.find(x=>x.title===t);if(!b){b={title:t,cover:e.cover||'',genre:'기타',status:'reading',rating:0,notes:[]};S.books.push(b);}
+    if(!b.cover&&e.cover)b.cover=e.cover;if(e.note)b.notes.unshift({date:e.date,note:e.note});});}
 function day(k){k=k||todayKey();if(!S.days[k])S.days[k]={water:0,routines:{},meals:0,read:0};if(S.days[k].read===undefined)S.days[k].read=0;return S.days[k];}
 function save(){store.set('dmind',S);}
 
@@ -828,7 +897,8 @@ function show(id){screens.forEach(s=>s.classList.toggle('active',s.id==='s-'+id)
   const el=document.querySelector('#s-'+id);if(el)el.scrollTop=0;
   if(id!=='exercise'){stopCam();stopPoseLoop();}
   if(id!=='breathe')stopBreathe();
-  if(id==='profile')renderProfile();}
+  if(id==='profile')renderProfile();
+  if(id==='exercise'&&typeof setRefMove==='function')setRefMove(MOVES[wk.idx]?MOVES[wk.idx].name:'워밍업 스트레칭');}
 tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.tab)));
 document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',()=>show(el.dataset.go)));
 
@@ -837,7 +907,11 @@ const toast=document.getElementById('toast');let tt;
 function ping(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),1900);}
 document.querySelectorAll('[data-toast]').forEach(b=>b.addEventListener('click',()=>ping(b.dataset.toast)));
 const modal=document.getElementById('modal');
-function popup(em,title,body){document.getElementById('mEm').textContent=em;document.getElementById('mTitle').textContent=title;document.getElementById('mBody').innerHTML=body;modal.classList.add('show');}
+function popup(em,title,body,action){document.getElementById('mEm').textContent=em;document.getElementById('mTitle').textContent=title;document.getElementById('mBody').innerHTML=body;
+  const ab=document.getElementById('mAction');
+  if(action){ab.style.display='';ab.textContent=action.label;ab.onclick=()=>{modal.classList.remove('show');action.fn();};}
+  else{ab.style.display='none';ab.onclick=null;}
+  modal.classList.add('show');}
 document.getElementById('mClose').addEventListener('click',()=>modal.classList.remove('show'));
 
 /* ============ points / level ============ */
@@ -1009,9 +1083,9 @@ function tick(){wk.elapsed++;wk.kcal=Math.round(wk.elapsed*0.38);
   if(m.type==='time'){wk.t++;setRepLabel();if(Math.random()<.4)coach(m.coach[Math.floor(Math.random()*m.coach.length)]);if(wk.t>=m.dur)nextMove();}
   else{if(!poseActive&&wk.elapsed%2===0&&wk.rep<m.reps){wk.rep++;setRepLabel();coach(m.coach[Math.min(wk.rep%m.coach.length,m.coach.length-1)]);}if(wk.rep>=m.reps)nextMove();}
 }
-function nextMove(){wk.idx++;wk.rep=0;wk.t=0;
+function nextMove(){wk.idx++;wk.rep=0;wk.t=0;squatState='up';kneeBuf=[];hipBase=null;
   if(wk.idx>=MOVES.length){finishWorkout();return;}
-  setRepLabel();renderMoveList();coach('다음: '+MOVES[wk.idx].name+' 가볼까요?');}
+  setRepLabel();renderMoveList();setRefMove(MOVES[wk.idx].name);coach('다음: '+MOVES[wk.idx].name+' 가볼까요?');}
 function finishWorkout(){clearInterval(wk.timer);wk.running=false;
   document.getElementById('wkStart').textContent='운동 시작 ▶';
   coach('운동 완료! 정말 잘했어요 🎉');renderMoveList();stopPoseLoop();
@@ -1020,16 +1094,23 @@ function finishWorkout(){clearInterval(wk.timer);wk.running=false;
 document.getElementById('wkStart').addEventListener('click',()=>{
   if(wk.running){clearInterval(wk.timer);wk.running=false;document.getElementById('wkStart').textContent='이어서 ▶';coach('잠시 쉬어가요 😌');renderMoveList();return;}
   if(wk.idx>=MOVES.length){wk={running:false,idx:0,rep:0,t:0,elapsed:0,kcal:0,timer:null};}
-  wk.running=true;document.getElementById('wkStart').textContent='일시정지 ⏸';startCam();setRepLabel();renderMoveList();
+  wk.running=true;document.getElementById('wkStart').textContent='일시정지 ⏸';startCam();setRepLabel();renderMoveList();setRefMove(MOVES[wk.idx].name);
   coach('좋아요! '+MOVES[wk.idx].name+'부터 시작해요 💪');
   // try to enable real AI pose tracking; falls back to demo if unavailable
   coach('AI 자세 인식을 준비하고 있어요... 👀');
   ensureDetector().then(d=>{
-    if(d){poseActive=true;document.getElementById('skel').style.display='none';startPoseLoop();coach('AI가 자세를 인식하고 있어요! 💪');}
+    if(d){poseActive=true;document.getElementById('skel').style.display='none';startPoseLoop();coach('약 1m 떨어져 상체가 보이게 서서 움직여 주세요! 🙆 인식 중이에요 💪');}
     else{poseActive=false;coach('좋아요! '+MOVES[wk.idx].name+'부터 시작해요 💪 (데모 모드)');}
   });
   wk.timer=setInterval(tick,1000);});
 document.getElementById('wkSkip').addEventListener('click',()=>{if(wk.idx<MOVES.length){nextMove();}});
+function renderPace(){const m=MOVES[Math.min(wk.idx,MOVES.length-1)];if(!m)return;
+  document.getElementById('paceVal').textContent=m.type==='time'?(m.dur+'초'):(m.reps+'회');}
+function adjustPace(dir){const m=MOVES[Math.min(wk.idx,MOVES.length-1)];if(!m)return;
+  if(m.type==='time'){m.dur=Math.max(10,m.dur+dir*10);}else{m.reps=Math.max(4,m.reps+dir*2);}
+  renderPace();setRepLabel();renderMoveList();ping(m.name+' '+(m.type==='time'?m.dur+'초':m.reps+'회')+'로 조정했어요');}
+document.getElementById('paceMinus').addEventListener('click',()=>adjustPace(-1));
+document.getElementById('pacePlus').addEventListener('click',()=>adjustPace(1));
 
 /* camera */
 let stream=null;
@@ -1078,38 +1159,78 @@ async function poseLoop(){
   }
   poseRAFid=requestAnimationFrame(poseLoop);
 }
-function coverMap(v,cv){const W=cv.width,H=cv.height,vw=v.videoWidth,vh=v.videoHeight;
-  const s=Math.max(W/vw,H/vh);const ox=(vw*s-W)/2,oy=(vh*s-H)/2;
+function coverMap(v,boxW,boxH){const vw=v.videoWidth,vh=v.videoHeight;
+  const s=Math.max(boxW/vw,boxH/vh);const ox=(vw*s-boxW)/2,oy=(vh*s-boxH)/2;
   return(x,y)=>[x*s-ox,y*s-oy];}
-function drawPose(pose){const v=document.getElementById('cam'),cv=document.getElementById('poseCanvas');if(!cv||!cv.getContext)return;
-  const rect=cv.getBoundingClientRect();if(cv.width!==rect.width){cv.width=rect.width;cv.height=rect.height;}
-  const ctx=cv.getContext('2d');ctx.clearRect(0,0,cv.width,cv.height);
-  if(!pose||!pose.keypoints)return;const k=pose.keypoints,map=coverMap(v,cv);
-  ctx.strokeStyle='rgba(63,233,214,.9)';ctx.lineWidth=3;ctx.lineCap='round';
+function drawPose(pose){const v=document.getElementById('cam'),cv=document.getElementById('poseCanvas');if(!cv||!cv.getContext||!v.videoWidth)return;
+  const rect=cv.getBoundingClientRect();const dpr=window.devicePixelRatio||1;
+  const bw=Math.round(rect.width),bh=Math.round(rect.height);
+  if(cv.width!==bw*dpr){cv.width=bw*dpr;cv.height=bh*dpr;}
+  const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,bw,bh);
+  if(!pose||!pose.keypoints)return;const k=pose.keypoints,map=coverMap(v,bw,bh);
+  ctx.strokeStyle='rgba(63,233,214,.92)';ctx.lineWidth=3;ctx.lineCap='round';
   BONES.forEach(([a,b])=>{const p=k[a],q=k[b];if(p&&q&&p.score>0.3&&q.score>0.3){const[x1,y1]=map(p.x,p.y),[x2,y2]=map(q.x,q.y);
     ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();}});
-  ctx.fillStyle='#3FE9D6';k.forEach(p=>{if(p.score>0.3){const[x,y]=map(p.x,p.y);ctx.beginPath();ctx.arc(x,y,5,0,7);ctx.fill();}});}
+  ctx.fillStyle='#3FE9D6';k.forEach(p=>{if(p.score>0.3){const[x,y]=map(p.x,p.y);ctx.beginPath();ctx.arc(x,y,4.5,0,7);ctx.fill();}});}
 function angle(a,b,c){const ab=[a.x-b.x,a.y-b.y],cb=[c.x-b.x,c.y-b.y];
   const dot=ab[0]*cb[0]+ab[1]*cb[1];const m=Math.hypot(ab[0],ab[1])*Math.hypot(cb[0],cb[1]);
   if(!m)return 180;return Math.acos(Math.max(-1,Math.min(1,dot/m)))*180/Math.PI;}
+let hipBase=null,lastRepT=0;
 function updateMetrics(pose){const k=pose.keypoints;
-  // accuracy from average confidence of torso/legs
   const idxs=[5,6,11,12,13,14,15,16];let s=0,n=0;idxs.forEach(i=>{if(k[i]){s+=k[i].score;n++;}});
   const acc=n?Math.round(Math.max(.6,Math.min(.99,s/n))*100):0;lastAcc=acc;
   if(poseActive)document.getElementById('accV').textContent='자세 '+acc+'%';
-  // squat rep detection via knee angle (use the more confident leg)
-  const L=(k[KP.lhip].score+k[KP.lkn].score+k[KP.lan].score),R=(k[KP.rhip].score+k[KP.rkn].score+k[KP.ran].score);
+  // ----- squat detection: knee-angle OR hip-drop, lenient + debounced -----
+  const m=MOVES[wk.idx];if(!wk.running||!m||m.type!=='rep')return;
+  const L=k[KP.lhip].score+k[KP.lkn].score+k[KP.lan].score,R=k[KP.rhip].score+k[KP.rkn].score+k[KP.ran].score;
   const hip=L>=R?k[KP.lhip]:k[KP.rhip],kn=L>=R?k[KP.lkn]:k[KP.rkn],an=L>=R?k[KP.lan]:k[KP.ran];
-  if(hip.score>0.3&&kn.score>0.3&&an.score>0.3){
-    const ang=angle(hip,kn,an);kneeBuf.push(ang);if(kneeBuf.length>3)kneeBuf.shift();
+  const sh=L>=R?k[KP.lsh]:k[KP.rsh];
+  let down=false,up=false;
+  if(hip.score>0.25&&kn.score>0.25&&an.score>0.25){
+    const ang=angle(hip,kn,an);kneeBuf.push(ang);if(kneeBuf.length>4)kneeBuf.shift();
     const avg=kneeBuf.reduce((a,b)=>a+b,0)/kneeBuf.length;
-    if(squatState==='up'&&avg<105){squatState='down';}
-    else if(squatState==='down'&&avg>155){squatState='up';onSquatRep();}
+    if(avg<140)down=true;if(avg>156)up=true;
+  } else if(hip.score>0.3&&sh&&sh.score>0.3){
+    // 1m / upper-body mode: track hip vertical drop relative to torso length
+    const torso=Math.abs(hip.y-sh.y)||1;if(hipBase===null||hip.y<hipBase)hipBase=hip.y;
+    const drop=(hip.y-hipBase)/torso;if(drop>0.22)down=true;if(drop<0.10)up=true;
   }
+  const now=Date.now();
+  if(squatState==='up'&&down){squatState='down';}
+  else if(squatState==='down'&&up&&now-lastRepT>700){squatState='up';lastRepT=now;onSquatRep();}
 }
 function onSquatRep(){if(!wk.running)return;const m=MOVES[wk.idx];if(!m||m.type!=='rep')return;
   if(wk.rep<m.reps){wk.rep++;setRepLabel();coach(m.coach[Math.min(wk.rep%m.coach.length,m.coach.length-1)]);}
   if(wk.rep>=m.reps)nextMove();}
+// manual fallback: tap the rep counter to add one (works in any mode)
+document.getElementById('repCell').addEventListener('click',()=>{const m=MOVES[wk.idx];
+  if(wk.running&&m&&m.type==='rep'){onSquatRep();ping('+1 (수동 카운트)');}});
+
+/* ============ exercise reference demo (top-right) ============ */
+const REF={
+  '워밍업 스트레칭':{cls:'demo-stretch',q:'전신 워밍업 스트레칭',tip:'팔을 크게 돌리며 몸 풀기'},
+  '스쿼트':{cls:'demo-squat',q:'스쿼트 정확한 자세',tip:'엉덩이 뒤로, 무릎은 발끝 안쪽'},
+  '플랭크':{cls:'demo-plank',q:'플랭크 정확한 자세',tip:'머리-엉덩이-발 일직선 유지'},
+  '쿨다운 호흡':{cls:'demo-breathe',q:'쿨다운 심호흡 스트레칭',tip:'코로 들이쉬고 입으로 길게'}
+};
+function refFigureSVG(){return '<svg viewBox="0 0 88 74"><g class="reffig">'+
+  '<g class="ref-torso fig-part">'+
+  '<circle class="ref-head" cx="44" cy="16" r="6" fill="#13A99B"/>'+
+  '<rect class="ref-chest fig-part" x="40" y="22" width="8" height="20" rx="4" fill="#2FD0C0"/>'+
+  '<rect class="ref-armL fig-part" x="33" y="24" width="4" height="16" rx="2" fill="#37D6C6"/>'+
+  '<rect class="ref-armR fig-part" x="51" y="24" width="4" height="16" rx="2" fill="#37D6C6"/>'+
+  '<g class="ref-body fig-part">'+
+  '<rect class="ref-thighL fig-part" x="40" y="42" width="4" height="15" rx="2" fill="#13A99B"/>'+
+  '<rect class="ref-thighR fig-part" x="44" y="42" width="4" height="15" rx="2" fill="#13A99B"/>'+
+  '<rect class="ref-shinL fig-part" x="40" y="56" width="4" height="14" rx="2" fill="#0E8B7F"/>'+
+  '<rect class="ref-shinR fig-part" x="44" y="56" width="4" height="14" rx="2" fill="#0E8B7F"/>'+
+  '</g></g></g></svg>';}
+function setRefMove(name){const r=REF[name]||REF['워밍업 스트레칭'];
+  const stage=document.getElementById('refStage');stage.className='refstage '+r.cls;stage.innerHTML=refFigureSVG();
+  document.getElementById('refLabel').textContent=name;
+  document.getElementById('refVid').href='https://www.youtube.com/results?search_query='+encodeURIComponent(r.q);
+  const tipEl=document.getElementById('coachTxt');if(tipEl&&!wk.running)tipEl.textContent='💡 '+r.tip;
+  if(typeof renderPace==='function')renderPace();}
 
 /* ============ PRO ============ */
 document.querySelectorAll('[data-plan]').forEach(p=>p.addEventListener('click',()=>{document.querySelectorAll('[data-plan]').forEach(x=>x.classList.remove('best'));p.classList.add('best');}));
@@ -1141,10 +1262,23 @@ document.getElementById('resetMenu').addEventListener('click',()=>{const k=today
 
 /* ============ reading ============ */
 const READ_GOAL=15;
+const READ_QUOTES=[
+  '"책은 가장 조용하고 변함없는 친구다." — 찰스 W. 엘리엇',
+  '"오늘의 나를 만든 것은 우리 마을 도서관이었다." — 빌 게이츠',
+  '"좋은 책을 읽는 것은 과거의 훌륭한 이들과 나누는 대화다." — 데카르트',
+  '"한 시간의 독서로 누그러지지 않는 걱정은 없다." — 몽테스키외',
+  '"책이 없는 방은 영혼이 없는 육체와 같다." — 키케로',
+  '"독서는 완성된 사람을 만든다." — 프랜시스 베이컨',
+  '"읽지 않는 사람은 읽지 못하는 사람보다 나을 게 없다." — 마크 트웨인',
+  '"오늘 독서가는 내일 리더가 된다." — 마거릿 풀러',
+  '"책 한 권으로도 생각은 바뀔 수 있다." — 말랄라 유사프자이',
+  '"많이 읽어라. 그러면 많이 알게 된다." — 닥터 수스'
+];
 function renderReading(){const d=day();
   document.getElementById('readMin').textContent=d.read;
   document.getElementById('readBar').style.width=Math.min(100,d.read/READ_GOAL*100)+'%';
-  document.getElementById('readBook').textContent=S.book?('📕 '+S.book):'읽는 책을 정해볼까요? 탭해서 입력 ✎';}
+  document.getElementById('readBook').textContent=S.book?('📕 '+S.book):'읽는 책을 정해볼까요? 탭해서 입력 ✎';
+  const di=Math.floor(Date.now()/864e5)%READ_QUOTES.length;document.getElementById('readQuote').textContent='💬 '+READ_QUOTES[di];}
 document.getElementById('readBook').addEventListener('click',()=>{const t=prompt('지금 읽는 책 제목을 적어주세요',S.book||'');if(t!==null){S.book=t.trim();save();renderReading();}});
 document.getElementById('readAdd').addEventListener('click',()=>{const d=day();d.read+=15;S.totalReadMin+=15;save();renderReading();addPoints(15);
   if(d.read===READ_GOAL)ping('🎉 오늘 독서 목표 달성! +20P 보너스'),addPoints(20);else ping('📖 좋은 습관! +15P');});
@@ -1274,42 +1408,101 @@ async function coachSend(text){
   renderCoach();chat.scrollTop=chat.scrollHeight;}
 document.getElementById('chatSend').addEventListener('click',()=>{const i=document.getElementById('chatInput');const v=i.value;i.value='';coachSend(v);});
 document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value;e.target.value='';coachSend(v);}});
+/* voice input (Web Speech API, ko-KR) */
+(function(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;const mic=document.getElementById('chatMic');
+  if(!SR){mic.style.display='none';return;}
+  let rec=null,listening=false;
+  mic.addEventListener('click',()=>{
+    if(listening){try{rec.stop();}catch(e){}return;}
+    rec=new SR();rec.lang='ko-KR';rec.interimResults=true;rec.continuous=false;
+    const inp=document.getElementById('chatInput');let finalText='';
+    rec.onstart=()=>{listening=true;mic.classList.add('listening');inp.placeholder='듣고 있어요... 말씀하세요 🎤';};
+    rec.onresult=e=>{let t='';for(let i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;inp.value=t;if(e.results[e.results.length-1].isFinal)finalText=t;};
+    rec.onerror=()=>{ping('음성 인식을 사용할 수 없어요');};
+    rec.onend=()=>{listening=false;mic.classList.remove('listening');inp.placeholder='또로에게 물어보세요...';
+      const v=(finalText||inp.value).trim();if(v){inp.value='';coachSend(v);}};
+    try{rec.start();}catch(e){}
+  });
+})();
 document.getElementById('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)coachSend(c.dataset.q);});
 document.getElementById('coachTeaser').addEventListener('click',openCoach);
 document.getElementById('openCoachBtn').addEventListener('click',openCoach);
 document.getElementById('mascotMsg').addEventListener('click',openCoach);
 document.querySelector('#s-home .droplet').addEventListener('click',openCoach);
 
-/* ============ reading journal (책장) ============ */
-const coverShot=document.getElementById('coverShot');let coverThumb=null;
+/* ============ reading journal · 책별 그룹 + 카테고리 ============ */
+const GENRES=['소설','에세이','자기계발','인문','경제·경영','과학','시·문학','기타'];
+const STATUS=[['want','읽고싶어요'],['reading','읽는중'],['done','완독']];
+let coverThumb=null,pickGenre='기타',pickStatus='reading',pickRating=0,shelfFilter='all';
+const coverShot=document.getElementById('coverShot');
 document.getElementById('rcCover').addEventListener('click',()=>coverShot.click());
 coverShot.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
   rd.onload=()=>makeThumb(rd.result,300,t=>{coverThumb=t;const c=document.getElementById('rcCover');c.style.backgroundImage='url('+t+')';c.innerHTML='';});
   rd.readAsDataURL(f);});
+// build genre/status/star pickers
+(function buildPickers(){
+  const g=document.getElementById('rcGenre');g.innerHTML='';
+  GENRES.forEach(x=>{const b=document.createElement('button');b.className='rc-chip'+(x===pickGenre?' on':'');b.textContent=x;
+    b.addEventListener('click',()=>{pickGenre=x;[...g.children].forEach(c=>c.classList.toggle('on',c===b));});g.appendChild(b);});
+  const s=document.getElementById('rcStatus');s.innerHTML='';
+  STATUS.forEach(([k,lbl])=>{const b=document.createElement('button');b.className='rc-chip'+(k===pickStatus?' on':'');b.textContent=lbl;
+    b.addEventListener('click',()=>{pickStatus=k;[...s.children].forEach(c=>c.classList.toggle('on',c===b));});s.appendChild(b);});
+  const st=document.getElementById('rcStars');st.innerHTML='';
+  for(let i=1;i<=5;i++){const b=document.createElement('span');b.className='rc-star';b.textContent='★';b.dataset.v=i;
+    b.addEventListener('click',()=>{pickRating=i;[...st.children].forEach(c=>c.classList.toggle('on',+c.dataset.v<=i));});st.appendChild(b);}
+})();
 document.getElementById('readJbtn').addEventListener('click',()=>{
   const open=document.getElementById('readCompose').classList.toggle('show');
   document.getElementById('readJbtn').textContent=open?'닫기':'📔 오늘의 한 줄 기록 남기기';
   if(open&&!document.getElementById('rcBook').value)document.getElementById('rcBook').value=S.book||'';});
 document.getElementById('rcSave').addEventListener('click',()=>{
-  const book=document.getElementById('rcBook').value.trim()||S.book||'제목 없음';
+  const title=(document.getElementById('rcBook').value.trim()||S.book||'제목 없음');
   const note=document.getElementById('rcNote').value.trim();
   if(!note&&!coverThumb){ping('한 줄이나 표지 중 하나는 남겨주세요 ✍️');return;}
-  S.readLog.unshift({date:todayKey(),book,note,cover:coverThumb||''});
-  if(book&&!S.book)S.book=book;
-  save();coverThumb=null;document.getElementById('rcNote').value='';
+  let b=S.books.find(x=>x.title===title);
+  if(!b){b={title,cover:coverThumb||'',genre:pickGenre,status:pickStatus,rating:pickRating,notes:[]};S.books.unshift(b);}
+  else{if(coverThumb)b.cover=coverThumb;b.genre=pickGenre;b.status=pickStatus;if(pickRating)b.rating=pickRating;}
+  if(note)b.notes.unshift({date:todayKey(),note});
+  if(title&&!S.book)S.book=title;
+  save();coverThumb=null;pickRating=0;
+  document.getElementById('rcNote').value='';document.querySelectorAll('#rcStars .rc-star').forEach(c=>c.classList.remove('on'));
   const c=document.getElementById('rcCover');c.style.backgroundImage='';c.innerHTML='<span>📷<br>표지</span>';
   document.getElementById('readCompose').classList.remove('show');document.getElementById('readJbtn').textContent='📔 오늘의 한 줄 기록 남기기';
-  renderReading();renderShelf();addPoints(30);ping('📚 책장에 꽂았어요 · +30P');});
+  renderReading();renderShelf();addPoints(30);ping('📚 책장에 기록했어요 · +30P');});
+function statusLabel(k){return(STATUS.find(s=>s[0]===k)||[,'읽는중'])[1];}
 function renderShelf(){const wrap=document.getElementById('shelfWrap'),sh=document.getElementById('shelf');
-  if(!S.readLog.length){wrap.classList.remove('show');return;}
-  wrap.classList.add('show');document.getElementById('shelfCount').textContent='· '+S.readLog.length+'권';sh.innerHTML='';
-  S.readLog.forEach(e=>{const cov=e.cover?(' style="background-image:url('+e.cover+')"'):'';
+  if(!S.books.length){wrap.classList.remove('show');return;}
+  wrap.classList.add('show');
+  // filter chips
+  const fil=document.getElementById('shelfFilter');fil.innerHTML='';
+  const counts={all:S.books.length};STATUS.forEach(([k])=>counts[k]=S.books.filter(b=>b.status===k).length);
+  [['all','전체']].concat(STATUS).forEach(([k,lbl])=>{const b=document.createElement('button');
+    b.className='sf-chip'+(k===shelfFilter?' on':'');b.textContent=(lbl||'전체')+' '+counts[k];
+    b.addEventListener('click',()=>{shelfFilter=k;renderShelf();});fil.appendChild(b);});
+  const list=shelfFilter==='all'?S.books:S.books.filter(b=>b.status===shelfFilter);
+  document.getElementById('shelfCount').textContent='· '+list.length+'권';
+  sh.innerHTML='';
+  if(!list.length){sh.innerHTML='<div style="font-size:12px;color:var(--ink-soft);font-weight:600;padding:10px">이 칸에는 아직 책이 없어요 📚</div>';return;}
+  list.forEach(b=>{const cov=b.cover?(' style="background-image:url('+b.cover+')"'):'';
+    const stars=b.rating?('★'.repeat(b.rating)):'';
     const div=document.createElement('div');div.className='book';
-    div.innerHTML='<div class="cov"'+cov+'></div><div class="bt"></div><div class="bd">'+fmtDate(e.date)+'</div>';
-    if(!e.cover)div.querySelector('.cov').textContent=e.book;
-    div.querySelector('.bt').textContent=e.book;
-    div.addEventListener('click',()=>popup('📖',e.book,(e.note?('"'+e.note+'"<br><br>'):'')+'<span style="font-size:12px;color:var(--ink-soft)">'+fmtDate(e.date)+'</span>'));
+    div.innerHTML='<div class="cov"'+cov+'></div><div class="bt"></div>'+
+      '<div class="meta">'+b.genre+(stars?(' · <span style="color:#FFC24B">'+stars+'</span>'):'')+'</div>'+
+      '<span class="stat '+b.status+'">'+statusLabel(b.status)+'</span>';
+    if(!b.cover)div.querySelector('.cov').textContent=b.title;
+    div.querySelector('.bt').textContent=b.title;
+    div.addEventListener('click',()=>openBook(b));
     sh.appendChild(div);});}
+function openBook(b){const idx=S.books.indexOf(b);
+  const stars=b.rating?('<span style="color:#FFC24B">'+'★'.repeat(b.rating)+'</span>'+'☆'.repeat(5-b.rating)):'별점 없음';
+  let body='<div style="font-size:12px;color:var(--ink-soft);font-weight:700;margin-bottom:10px">'+b.genre+' · '+statusLabel(b.status)+' · '+stars+'</div>';
+  if(b.notes&&b.notes.length){body+='<div style="text-align:left;max-height:240px;overflow:auto">';
+    b.notes.forEach(n=>{body+='<div style="border-left:3px solid #C9BEFF;padding:6px 0 6px 10px;margin-bottom:9px"><div style="font-size:13px;font-weight:500;line-height:1.5">'+
+      n.note.replace(/</g,'&lt;')+'</div><div style="font-size:10.5px;color:var(--ink-soft);font-weight:700;margin-top:3px">'+fmtDate(n.date)+'</div></div>';});
+    body+='</div>';}
+  else body+='<div style="font-size:13px;color:var(--ink-soft)">아직 한 줄 기록이 없어요</div>';
+  body+='<div style="margin-top:6px;font-size:11px;color:var(--ink-soft);font-weight:700">📝 한 줄 기록 '+(b.notes?b.notes.length:0)+'개</div>';
+  popup('📖',b.title,body,{label:'🗑 삭제',fn:()=>{const i=S.books.indexOf(b);if(i>=0)S.books.splice(i,1);save();renderShelf();ping('책을 책장에서 뺐어요');}});}
 
 /* ============ meal save + 오늘 먹은 음식 ============ */
 document.getElementById('saveMealBtn').addEventListener('click',()=>{

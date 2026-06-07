@@ -1,5 +1,5 @@
 // D_mind service worker — app-shell caching for offline use
-const CACHE = 'dmind-v2';
+const CACHE = 'dmind-v4';
 const ASSETS = [
   './',
   './index.html',
